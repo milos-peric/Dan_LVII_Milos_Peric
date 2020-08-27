@@ -1,0 +1,5 @@
+Majica,30,35.11
+Pantalone,30,50.13
+Patike,30,90.95
+Kacket,30,15.53
+Jakna,30,104.75
