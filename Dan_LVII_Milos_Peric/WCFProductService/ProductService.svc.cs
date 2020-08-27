@@ -50,7 +50,6 @@ namespace WCFProductService
             }
         }
 
-
         public void CreateReceipt(List<Product> list)
         {
             DateTime receiptCreationTime = DateTime.UtcNow;
