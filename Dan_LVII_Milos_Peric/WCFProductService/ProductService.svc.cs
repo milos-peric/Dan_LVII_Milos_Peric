@@ -17,11 +17,18 @@ namespace WCFProductService
         private List<Product> _productList;
         private static int _recieptNumber = 1;
 
+        #region Constructor
         public ProductService()
         {
             _productList = GetAllProducts();
         }
+        #endregion
 
+        #region Methods
+        /// <summary>
+        /// Reads document and adds document data o list.
+        /// </summary>
+        /// <returns>List of data read from document.</returns>
         public List<Product> GetAllProducts()
         {
             List<Product> list = new List<Product>();
@@ -50,6 +57,10 @@ namespace WCFProductService
             }
         }
 
+        /// <summary>
+        /// Creates receipt after purchase is complete.
+        /// </summary>
+        /// <param name="list">List of purchased products.</param>
         public void CreateReceipt(List<Product> list)
         {
             DateTime receiptCreationTime = DateTime.UtcNow;
@@ -85,6 +96,11 @@ namespace WCFProductService
             }
         }
 
+        /// <summary>
+        /// Modifies product amount based on product ID.
+        /// </summary>
+        /// <param name="id">ID of product we want to change amount left.</param>
+        /// <param name="amount">New amount to substract from current amount of products left.</param>
         public void ModifyProductStock(int id, int amount)
         {
             Product productToModify = (from p in _productList where p.ID == id select p).First();
@@ -106,6 +122,10 @@ namespace WCFProductService
             _productList = GetAllProducts();
         }
 
+        /// <summary>
+        /// Add to product to product stock.
+        /// </summary>
+        /// <param name="product">Product you want to add to product stock.</param>
         public void AddNewProduct(Product product)
         {
             using (StreamWriter streamWriter = new StreamWriter(_productStockPath, append: true))
@@ -115,6 +135,11 @@ namespace WCFProductService
             _productList = GetAllProducts();
         }
 
+        /// <summary>
+        /// Modifies product price based on product ID.
+        /// </summary>
+        /// <param name="id">ID of product we want to change.</param>
+        /// <param name="price">New price to replace old price.</param>
         public void ModifyProductPrice(int id, double price)
         {
             Product productToModify = (from p in _productList where p.ID == id select p).First();
@@ -135,5 +160,6 @@ namespace WCFProductService
             }
             _productList = GetAllProducts();
         }
+        #endregion
     }
 }

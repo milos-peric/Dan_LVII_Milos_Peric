@@ -12,6 +12,9 @@ namespace Dan_LVII_Milos_Peric
 {
     class Utility
     {
+        /// <summary>
+        /// Basic menu that implements basic functionalities for transactions with service client.
+        /// </summary>
         public static void StartMenu()
         {
             Utility utility = new Utility();
@@ -71,6 +74,9 @@ namespace Dan_LVII_Milos_Peric
             }
         }
 
+        /// <summary>
+        /// Displays current product stock by using service client.
+        /// </summary>
         public void ShowAllProducts()
         {
             using (ProductServiceClient wcf = new ProductServiceClient())
@@ -82,6 +88,9 @@ namespace Dan_LVII_Milos_Peric
             }
         }
 
+        /// <summary>
+        /// Allows user to select one or more products to purchase available in stock.
+        /// </summary>
         public void PurchaseProduct()
         {
             Console.WriteLine("Displaying available products:");
@@ -148,6 +157,9 @@ namespace Dan_LVII_Milos_Peric
             } while (isValidId == false);
         }
 
+        /// <summary>
+        /// Adds new product to stock by utilizing service client.
+        /// </summary>
         public void AddProduct()
         {
 
@@ -214,7 +226,9 @@ namespace Dan_LVII_Milos_Peric
             Console.WriteLine();
             Console.WriteLine("New product added successfully.");
         }
-
+        /// <summary>
+        /// Allows user to modify price by using service client.
+        /// </summary>
         public void ModifyPrice()
         {
             ShowAllProducts();
@@ -267,6 +281,11 @@ namespace Dan_LVII_Milos_Peric
             ShowAllProducts();
         }
 
+        /// <summary>
+        /// Method allows user to get a receipt after pruchase is completed.
+        /// Displays receipt both on console and by using service client prints receipt in service base directory.
+        /// </summary>
+        /// <param name="productList">List of products after pruchase is completed.</param>
         public void PrintReceipt(List<Product> productList)
         {
             Console.WriteLine();
@@ -290,6 +309,11 @@ namespace Dan_LVII_Milos_Peric
             Console.WriteLine("Receipt written to file in service base directory.");
         }
 
+        /// <summary>
+        /// Validation function used for validation product name.
+        /// </summary>
+        /// <param name="word">Word that is compared with regex pattern.</param>
+        /// <returns></returns>
         public static bool ValidateForLetters(string word)
         {
             bool isOnlyLetters = Regex.IsMatch(word, @"^[a-zA-Z ]+$");
