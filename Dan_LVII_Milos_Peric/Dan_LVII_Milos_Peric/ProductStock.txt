@@ -1,3 +1,0 @@
-Majica,3,35.6
-Pantalone,5,50.3
-Patike,4,90.9
